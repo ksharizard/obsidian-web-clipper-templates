@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "MusicBrainz Release",
+  "behavior": "create",
+  "noteContentFormat": "![image](https:{{schema:@MusicRelease:image.thumbnail[1].contentUrl}})\n\n## Tracklist\n\n| # | Title| Duration |\n| :--- | :--- | :--- |\n{% for track in schema:@MusicRelease:track  %}\n| {{loop.index}} | {{track.name}} | {{track.duration|duration}} |\n{% endfor %}\n\n## Review\n\n",
+  "properties": [
+    {
+      "name": "type",
+      "value": "{{schema:@MusicRelease:releaseOf.albumReleaseType|replace:\\\"http:\\/\\/schema.org\\/\\\":\\\"\\\"|replace:\\\"Release\\\":\\\"\\\"}}",
+      "type": "text"
+    },
+    {
+      "name": "image",
+      "value": "https:{{schema:@MusicRelease:image.thumbnail[1].contentUrl}}",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "value": "{{url}}",
+      "type": "text"
+    },
+    {
+      "name": "album",
+      "value": "{{schema:name}}",
+      "type": "text"
+    },
+    {
+      "name": "artist",
+      "value": "{{schema:@MusicRelease:creditedTo}}",
+      "type": "multitext"
+    },
+    {
+      "name": "releaseDate",
+      "value": "{{schema:@MusicRelease:hasReleaseRegion[0].releaseDate}}",
+      "type": "date"
+    },
+    {
+      "name": "listenedOn",
+      "value": "",
+      "type": "date"
+    },
+    {
+      "name": "rating",
+      "value": "",
+      "type": "number"
+    },
+    {
+      "name": "tags",
+      "value": "",
+      "type": "multitext"
+    }
+  ],
+  "triggers": [
+    "https://musicbrainz.org/release/"
+  ],
+  "noteNameFormat": "{{schema:name}} ({{schema:@MusicRelease:hasReleaseRegion[0].releaseDate|date:\"YYYY\"}})",
+  "path": "100 Personal/110 Media/113 Music"
+}

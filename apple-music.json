@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "Apple Music",
+  "behavior": "create",
+  "noteContentFormat": "![image]({{schema:@MusicAlbum:image|replace:\"1200x630\":\"500x500\"}})\n\n## Tracklist\n\n| # | Title| Duration |\n| :--- | :--- | :--- |\n{% for track in schema:@MusicAlbum:tracks %}\n| {{loop.index}} | {{track.name}} | {{track.duration|duration}} |\n{% endfor %}\n\n## Review\n\n",
+  "properties": [
+    {
+      "name": "image",
+      "value": "{{schema:@MusicAlbum:image|replace:\\\"1200x630\\\":\\\"500x500\\\"}}",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "value": "{{url}}",
+      "type": "text"
+    },
+    {
+      "name": "album",
+      "value": "{{meta:name:apple:title}}",
+      "type": "text"
+    },
+    {
+      "name": "artist",
+      "value": "{{schema:@MusicAlbum:byArtist[*].name|join}}",
+      "type": "multitext"
+    },
+    {
+      "name": "genres",
+      "value": "{{schema:@MusicAlbum:genre|join}}",
+      "type": "multitext"
+    },
+    {
+      "name": "releaseDate",
+      "value": "{{published}}",
+      "type": "date"
+    },
+    {
+      "name": "listenedOn",
+      "value": "",
+      "type": "date"
+    },
+    {
+      "name": "rating",
+      "value": "",
+      "type": "number"
+    },
+    {
+      "name": "tags",
+      "value": "",
+      "type": "multitext"
+    }
+  ],
+  "triggers": [
+    "https://music.apple.com/"
+  ],
+  "noteNameFormat": "{{meta:name:apple:title}} ({{published|date:\"YYYY\"}})",
+  "path": "100 Personal/110 Media/113 Music"
+}

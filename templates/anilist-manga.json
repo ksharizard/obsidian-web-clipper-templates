@@ -1,0 +1,73 @@
+{
+    "schemaVersion": "0.1.0",
+    "name": "Anilist: Manga",
+    "behavior": "create",
+    "noteContentFormat": "![image]({{schema:@WebPage:mainEntity.image}})\n\n## Review",
+    "properties": [
+        {
+            "name": "type",
+            "value": "[[Manga]]",
+            "type": "text"
+        },
+        {
+            "name": "image",
+            "value": "{{schema:@WebPage:mainEntity.image}}",
+            "type": "text"
+        },
+        {
+            "name": "url",
+            "value": "{{url}}",
+            "type": "text"
+        },
+        {
+            "name": "name",
+            "value": "{{title}}",
+            "type": "text"
+        },
+        {
+            "name": "genres",
+            "value": "{{schema:@WebPage:mainEntity.genre}}",
+            "type": "multitext"
+        },
+        {
+            "name": "plot",
+            "value": "{{description}}",
+            "type": "text"
+        },
+        {
+            "name": "startDate",
+            "value": "{{schema:@WebPage:mainEntity.startDate}}",
+            "type": "text"
+        },
+        {
+            "name": "onlineRating",
+            "value": "{{schema:@WebPage:mainEntity.aggregateRating.ratingValue|calc:\\\"/10\\\"}}",
+            "type": "number"
+        },
+        {
+            "name": "chaptersRead",
+            "value": "",
+            "type": "number"
+        },
+        {
+            "name": "lastRead",
+            "value": "",
+            "type": "text"
+        },
+        {
+            "name": "personalRating",
+            "value": "",
+            "type": "number"
+        },
+        {
+            "name": "tags",
+            "value": "planning",
+            "type": "multitext"
+        }
+    ],
+    "triggers": [
+        "https://anilist.co/manga/"
+    ],
+    "noteNameFormat": "{{title}} ({{schema:@WebPage:mainEntity.startDate|date:\"YYYY\"}})",
+    "path": "100 Personal/110 Media/114 Manga"
+}

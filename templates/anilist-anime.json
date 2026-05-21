@@ -1,0 +1,88 @@
+{
+    "schemaVersion": "0.1.0",
+    "name": "Anilist: Anime",
+    "behavior": "overwrite",
+    "noteContentFormat": "![image]({{schema:@WebPage:mainEntity.image}})\n\n## Review",
+    "properties": [
+        {
+            "name": "type",
+            "value": "[[Anime]]",
+            "type": "text"
+        },
+        {
+            "name": "image",
+            "value": "{{schema:@WebPage:mainEntity.image}}",
+            "type": "text"
+        },
+        {
+            "name": "url",
+            "value": "{{url}}",
+            "type": "text"
+        },
+        {
+            "name": "name",
+            "value": "{{title}}",
+            "type": "text"
+        },
+        {
+            "name": "director",
+            "value": "{{schema:@WebPage:mainEntity.director[*].name|wikilink}}",
+            "type": "multitext"
+        },
+        {
+            "name": "producers",
+            "value": "{{schema:@WebPage:mainEntity.producer[*].name|wikilink}}",
+            "type": "multitext"
+        },
+        {
+            "name": "creator",
+            "value": "{{schema:@WebPage:mainEntity.creator[*].name|wikilink}}",
+            "type": "multitext"
+        },
+        {
+            "name": "cast",
+            "value": "{{schema:@WebPage:mainEntity.actor[*].name|wikilink}}",
+            "type": "multitext"
+        },
+        {
+            "name": "genres",
+            "value": "{{schema:@WebPage:mainEntity.genre|wikilink}}",
+            "type": "multitext"
+        },
+        {
+            "name": "plot",
+            "value": "{{description}}",
+            "type": "text"
+        },
+        {
+            "name": "releaseDate",
+            "value": "{{schema:@WebPage:mainEntity.startDate}}",
+            "type": "date"
+        },
+        {
+            "name": "onlineRating",
+            "value": "{{schema:@WebPage:mainEntity.aggregateRating.ratingValue|calc:\\\"/10\\\"}}",
+            "type": "number"
+        },
+        {
+            "name": "lastWatched",
+            "value": "",
+            "type": "date"
+        },
+        {
+            "name": "personalRating",
+            "value": "",
+            "type": "number"
+        },
+        {
+            "name": "tags",
+            "value": "planning",
+            "type": "multitext"
+        }
+    ],
+    "triggers": [
+        "https://anilist.co/anime/"
+    ],
+    "noteNameFormat": "{{title}} ({{schema:@WebPage:mainEntity.startDate|date:\"YYYY\"}})",
+    "path": "100 Personal/110 Media/115 Anime"
+}

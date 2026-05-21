@@ -1,0 +1,78 @@
+{
+    "schemaVersion": "0.1.0",
+    "name": "IMDB: Movie",
+    "behavior": "create",
+    "noteContentFormat": "![image]({{image}})\n\n## Review",
+    "properties": [
+        {
+            "name": "type",
+            "value": "[[Movie]]",
+            "type": "text"
+        },
+        {
+            "name": "image",
+            "value": "{{image}}",
+            "type": "text"
+        },
+        {
+            "name": "url",
+            "value": "{{url}}",
+            "type": "text"
+        },
+        {
+            "name": "name",
+            "value": "{{schema:name}}",
+            "type": "text"
+        },
+        {
+            "name": "director",
+            "value": "{{selector:[data-testid=\\\"title-pc-principal-credit\\\"]:first-child a|unique|wikilink|join}}",
+            "type": "multitext"
+        },
+        {
+            "name": "actors",
+            "value": "{{selector:[data-testid=\\\"title-pc-principal-credit\\\"]:nth-child(3) div a|unique|wikilink|join}}",
+            "type": "multitext"
+        },
+        {
+            "name": "genres",
+            "value": "{{schema:genre|wikilink|join}}",
+            "type": "multitext"
+        },
+        {
+            "name": "plot",
+            "value": "{{schema:description}}",
+            "type": "text"
+        },
+        {
+            "name": "releaseDate",
+            "value": "{{schema:datePublished}}",
+            "type": "date"
+        },
+        {
+            "name": "onlineRating",
+            "value": "{{schema:aggregateRating.ratingValue}}",
+            "type": "number"
+        },
+        {
+            "name": "lastWatched",
+            "value": "",
+            "type": "date"
+        },
+        {
+            "name": "personalRating",
+            "value": "",
+            "type": "number"
+        },
+        {
+            "name": "tags",
+            "value": "planning",
+            "type": "multitext"
+        }
+    ],
+    "triggers": [
+        "schema:@Movie"
+    ],
+    "noteNameFormat": "{{schema:name}} ({{schema:datePublished|split:\"-\"|slice:0,1}})",
+    "path": "100 Personal/110 Media/111 Movies"
+}
